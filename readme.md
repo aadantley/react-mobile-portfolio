@@ -8,4 +8,4 @@ A clone of instagram.
 
 ## Duolingo Clone
 
-A Clone of questions from Duolingo.
+A clone of questions from Duolingo.
