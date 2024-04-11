@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "price": 120,
+    "title": "Cozy Studio near the Capitol",
+    "numberOfStars": 5,
+    "rating": 4.8,
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": "2",
+    "latitude": 38.8895,
+    "longitude": -77.0353,
+    "price": 150,
+    "title": "Modern Apartment Close to Monuments",
+    "numberOfStars": 4,
+    "rating": 4.5,
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": "3",
+    "latitude": 38.93,
+    "longitude": -77.0334,
+    "price": 200,
+    "title": "Luxury Condo with Skyline Views",
+    "numberOfStars": 5,
+    "rating": 4.9,
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": "4",
+    "latitude": 38.907,
+    "longitude": -77.0478,
+    "price": 90,
+    "title": "Affordable Room in Shared House",
+    "numberOfStars": 3,
+    "rating": 4.2,
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": "5",
+    "latitude": 38.8854,
+    "longitude": -77.0479,
+    "price": 175,
+    "title": "Spacious Family Home Near the Park",
+    "numberOfStars": 4,
+    "rating": 4.6,
+    "image": "https://via.placeholder.com/150"
+  }
+]
