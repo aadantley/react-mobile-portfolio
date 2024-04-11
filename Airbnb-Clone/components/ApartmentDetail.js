@@ -13,7 +13,13 @@ export default function ApartmentDetail({ apartment }) {
 
       <View style={styles.RightContainer}>
         <Text styles={styles.title}>{apartment.title}</Text>
-        <Text styles={styles.title}>${apartment.price}</Text>
+        <Text styles={styles.description}>You want to stay here for real</Text>
+        <View style={styles.footer}>
+          <Text styles={styles.title}>${apartment.price} / Night</Text>
+          <Text styles={styles.title}>
+            ★{apartment.rating} {apartment.numberOfStars}
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -28,12 +34,29 @@ const styles = StyleSheet.create({
     right: 10,
 
     flexDirection: "row",
+    borderRadius: 10,
   },
   title: {
     fontWeight: "bold",
+    marginBottom: 10,
+    fontSize: 16,
   },
   image: {
     width: 150,
     aspectRatio: 1,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+  RightContainer: {
+    padding: 10,
+    flex: 1,
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: "auto",
+  },
+  description: {
+    color: "gray",
   },
 });
