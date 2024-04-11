@@ -10,7 +10,11 @@ export default function ApartmentDetail({ apartment }) {
         }}
         style={styles.image}
       />
-      <Text styles={styles.title}>ApartmentDetail</Text>
+
+      <View style={styles.RightContainer}>
+        <Text styles={styles.title}>{apartment.title}</Text>
+        <Text styles={styles.title}>${apartment.price}</Text>
+      </View>
     </View>
   );
 }
@@ -20,9 +24,10 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     position: "absolute",
     bottom: 50,
-    padding: 10,
     left: 10,
     right: 10,
+
+    flexDirection: "row",
   },
   title: {
     fontWeight: "bold",
