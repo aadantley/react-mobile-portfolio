@@ -4,7 +4,7 @@ import { Text, View } from "@/components/Themed";
 export default function NewPostsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Feed</Text>
+      <Text style={styles.title}>Messages</Text>
     </View>
   );
 }
