@@ -4,6 +4,7 @@ import CustomMarker from "./components/CustomMarker";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import apartments from "./data/apartments.json";
 import ApartmentDetail from "./components/ApartmentDetail";
+import { useState } from "react";
 
 export default function App() {
   return (

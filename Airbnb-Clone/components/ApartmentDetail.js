@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     marginBottom: 10,
-    fontSize: 16,
+    fontSize: 25,
   },
   image: {
     width: 150,
