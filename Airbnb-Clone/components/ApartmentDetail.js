@@ -35,10 +35,10 @@ export default function ApartmentDetail({ apartment, onPressX }) {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
-    position: "absolute",
-    bottom: 125,
-    left: 10,
-    right: 10,
+    // position: "absolute",
+    // bottom: 125,
+    // left: 10,
+    // right: 10,
 
     flexDirection: "row",
     borderRadius: 10,
