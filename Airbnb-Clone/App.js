@@ -7,6 +7,7 @@ import React, { useState } from "react";
 //local
 import apartments from "./data/apartments.json";
 import ApartmentDetail from "./components/ApartmentDetail";
+import BottomSheet from "./components/BottomSheet";
 
 export default function App() {
   // Apartment Detail Card
@@ -44,6 +45,7 @@ export default function App() {
       )}
 
       {/* Bottom Sheet */}
+      <BottomSheet />
     </View>
   );
 }
