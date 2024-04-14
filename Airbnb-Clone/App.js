@@ -2,15 +2,25 @@ import { StatusBar } from "expo-status-bar";
 import { Text, View, StyleSheet } from "react-native";
 import CustomMarker from "./components/CustomMarker";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import React, { useMemo, useState, useRef, useCallback } from "react";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+
+//local
 import apartments from "./data/apartments.json";
 import ApartmentDetail from "./components/ApartmentDetail";
-import { useState } from "react";
 
 export default function App() {
+  // Apartment Detail Card
   const [selectedApartment, setSelectedApartment] = useState(null);
+
+  // Bottom Sheet
+  const snapPoints = useMemo(() => ["25%", "50%"], []);
 
   return (
     <View>
+      <StatusBar style="auto" />
+
+      {/* Map View of Region */}
       <MapView
         style={styles.map}
         initialRegion={{
@@ -20,6 +30,7 @@ export default function App() {
           longitudeDelta: 0.0052,
         }}
       >
+        {/* Markers per Item */}
         {apartments.map((apartment) => (
           <CustomMarker
             apartment={apartment}
@@ -28,8 +39,17 @@ export default function App() {
           />
         ))}
       </MapView>
+      {/* Apartment Detail Card */}
       {selectedApartment && <ApartmentDetail apartment={selectedApartment} />}
-      <StatusBar style="auto" />
+
+      {/* Bottom Sheet */}
+      <View style={styles.container}>
+        <BottomSheet index={1} snapPoints={snapPoints}>
+          <BottomSheetView style={styles.contentContainer}>
+            <Text>Awesome 🎉</Text>
+          </BottomSheetView>
+        </BottomSheet>
+      </View>
     </View>
   );
 }
@@ -49,5 +69,14 @@ const styles = StyleSheet.create({
   },
   markerText: {
     fontWeight: "bold",
+  },
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: "grey",
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center",
   },
 });
