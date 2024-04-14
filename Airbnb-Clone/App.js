@@ -7,6 +7,8 @@ import ApartmentDetail from "./components/ApartmentDetail";
 import { useState } from "react";
 
 export default function App() {
+  const [selectedApartment, setSelectedApartment] = useState(null);
+
   return (
     <View>
       <MapView
@@ -19,10 +21,14 @@ export default function App() {
         }}
       >
         {apartments.map((apartment) => (
-          <CustomMarker apartment={apartment} key={apartment.id} />
+          <CustomMarker
+            apartment={apartment}
+            key={apartment.id}
+            onPress={() => setSelectedApartment(apartment)}
+          />
         ))}
       </MapView>
-      <ApartmentDetail apartment={apartments[0]} />
+      {selectedApartment && <ApartmentDetail apartment={selectedApartment} />}
       <StatusBar style="auto" />
     </View>
   );

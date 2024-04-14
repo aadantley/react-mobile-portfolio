@@ -2,11 +2,12 @@ import React from "react";
 import { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { Text, View, StyleSheet } from "react-native";
 
-export default function CustomMarker({ apartment }) {
+export default function CustomMarker({ apartment, onPress }) {
   return (
     <Marker
       key={apartment.id}
       provider={PROVIDER_GOOGLE}
+      onPress={onPress}
       coordinate={{
         latitude: apartment.latitude,
         longitude: apartment.longitude,
