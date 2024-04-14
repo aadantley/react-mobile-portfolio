@@ -2,78 +2,66 @@ import { StatusBar } from "expo-status-bar";
 import { Text, View, StyleSheet } from "react-native";
 import CustomMarker from "./components/CustomMarker";
 import MapView from "react-native-maps";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import BottomSheet from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-//local
 import apartments from "./data/apartments.json";
 import ApartmentDetail from "./components/ApartmentDetail";
-import CustomBottomSheet from "./components/CustomBottomSheet";
 
 export default function App() {
-  // Apartment Detail Card
   const [selectedApartment, setSelectedApartment] = useState(null);
+  const snapPoints = useMemo(() => ["10%", "50%", "75%"], []);
 
   return (
-    <GestureHandlerRootView>
-      <StatusBar style="auto" />
-
-      {/* Map View of Region */}
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 38.9072,
-          longitude: -77.0369,
-          latitudeDelta: 0.0052,
-          longitudeDelta: 0.0052,
-        }}
-      >
-        {/* Markers per Item */}
-        {apartments.map((apartment) => (
-          <CustomMarker
-            apartment={apartment}
-            key={apartment.id}
-            onPress={() => setSelectedApartment(apartment)}
+    <GestureHandlerRootView style={styles.fullScreen}>
+      <View style={styles.container}>
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: 38.9072,
+            longitude: -77.0369,
+            latitudeDelta: 0.0052,
+            longitudeDelta: 0.0052,
+          }}
+        >
+          {apartments.map((apartment) => (
+            <CustomMarker
+              apartment={apartment}
+              key={apartment.id}
+              onPress={() => setSelectedApartment(apartment)}
+            />
+          ))}
+        </MapView>
+        {selectedApartment && (
+          <ApartmentDetail
+            apartment={selectedApartment}
+            onPressX={() => setSelectedApartment(null)}
           />
-        ))}
-      </MapView>
-      {/* Apartment Detail Card */}
-      {selectedApartment && (
-        <ApartmentDetail
-          apartment={selectedApartment}
-          onPressX={() => setSelectedApartment(null)}
-        />
-      )}
+        )}
+      </View>
 
-      {/* Bottom Sheet */}
-      <CustomBottomSheet style={{ flex: 1 }} />
+      <BottomSheet snapPoints={snapPoints} style={styles.bottomSheet}>
+        <Text>This should render now!</Text>
+      </BottomSheet>
+
+      <StatusBar style="auto" />
     </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
-  map: {
-    width: "100%",
-    height: "100%",
-  },
-  marker: {
-    backgroundColor: "white",
-    padding: 3,
-    paddingHorizontal: 8,
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 20,
-  },
-  markerText: {
-    fontWeight: "bold",
+  fullScreen: {
+    flex: 1,
   },
   container: {
     flex: 1,
-    padding: 24,
-    backgroundColor: "grey",
   },
-  contentContainer: {
-    flex: 1,
-    alignItems: "center",
+  map: {
+    flex: 1, // make the map a flex child
+  },
+  bottomSheet: {
+    padding: 16,
+    backgroundColor: "white",
   },
 });

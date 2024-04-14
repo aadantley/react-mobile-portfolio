@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
     position: "absolute",
-    bottom: 50,
+    bottom: 125,
     left: 10,
     right: 10,
 

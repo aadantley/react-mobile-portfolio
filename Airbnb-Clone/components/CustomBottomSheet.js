@@ -1,31 +1,25 @@
-import { View, Text, StyleSheet } from "react-native";
-import React, { useMemo } from "react";
-import BottomSheet from "@gorhom/bottom-sheet";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
+import React from "react";
+
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const CustomBottomSheet = () => {
-  const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <BottomSheet snapPoints={snapPoints}>
-        <View>
-          <Text>This is Awesome</Text>
-        </View>
-      </BottomSheet>
-    </GestureHandlerRootView>
+    <View style={styles.bottomSheetContainer}>
+      <Text>CustomBottomSheet</Text>
+    </View>
   );
 };
 
 export default CustomBottomSheet;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: "gray",
-  },
-  contentContainer: {
-    flex: 1,
-    alignItems: "center",
+  bottomSheetContainer: {
+    height: SCREEN_HEIGHT,
+    width: "100%",
+    backgroundColor: "white",
+    position: "absolute",
+    top: SCREEN_HEIGHT / 1.5,
+    borderRadius: 25,
   },
 });
