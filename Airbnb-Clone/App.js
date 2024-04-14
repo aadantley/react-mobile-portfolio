@@ -36,7 +36,12 @@ export default function App() {
         ))}
       </MapView>
       {/* Apartment Detail Card */}
-      {selectedApartment && <ApartmentDetail apartment={selectedApartment} />}
+      {selectedApartment && (
+        <ApartmentDetail
+          apartment={selectedApartment}
+          onPressX={() => setSelectedApartment(null)}
+        />
+      )}
 
       {/* Bottom Sheet */}
     </View>

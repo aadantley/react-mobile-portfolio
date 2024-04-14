@@ -1,7 +1,9 @@
 import { Text, View, StyleSheet, Image } from "react-native";
 import React from "react";
 
-export default function ApartmentDetail({ apartment }) {
+import Icon from "react-native-vector-icons/FontAwesome";
+
+export default function ApartmentDetail({ apartment, onPressX }) {
   return (
     <View style={styles.card}>
       <Image
@@ -12,8 +14,13 @@ export default function ApartmentDetail({ apartment }) {
       />
 
       <View style={styles.RightContainer}>
-        <Text styles={styles.title}>{apartment.title}</Text>
+        <View style={styles.header}>
+          <Text styles={styles.title}>{apartment.title}</Text>
+          <Icon name="close" size={20} color="black" onPress={onPressX} />
+        </View>
+
         <Text styles={styles.description}>You want to stay here for real</Text>
+        <Text></Text>
         <View style={styles.footer}>
           <Text styles={styles.title}>${apartment.price} / Night</Text>
           <Text styles={styles.title}>
@@ -38,8 +45,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
+    width: "65%",
     marginBottom: 10,
     fontSize: 25,
+    flexWrap: "wrap",
   },
   image: {
     width: 150,
@@ -50,6 +59,11 @@ const styles = StyleSheet.create({
   RightContainer: {
     padding: 10,
     flex: 1,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginRight: 10,
   },
   footer: {
     flexDirection: "row",
