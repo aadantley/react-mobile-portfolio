@@ -18,7 +18,7 @@ export default function App() {
   const snapPoints = useMemo(() => ["25%", "50%"], []);
 
   return (
-    <GestureHandlerRootView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <View>
         <StatusBar style="auto" />
 
