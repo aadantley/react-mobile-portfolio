@@ -4,6 +4,7 @@ import CustomMarker from "./components/CustomMarker";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import React, { useMemo, useState, useRef, useCallback } from "react";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 //local
 import apartments from "./data/apartments.json";
@@ -17,40 +18,42 @@ export default function App() {
   const snapPoints = useMemo(() => ["25%", "50%"], []);
 
   return (
-    <View>
-      <StatusBar style="auto" />
+    <GestureHandlerRootView>
+      <View>
+        <StatusBar style="auto" />
 
-      {/* Map View of Region */}
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 38.9072,
-          longitude: -77.0369,
-          latitudeDelta: 0.0052,
-          longitudeDelta: 0.0052,
-        }}
-      >
-        {/* Markers per Item */}
-        {apartments.map((apartment) => (
-          <CustomMarker
-            apartment={apartment}
-            key={apartment.id}
-            onPress={() => setSelectedApartment(apartment)}
-          />
-        ))}
-      </MapView>
-      {/* Apartment Detail Card */}
-      {selectedApartment && <ApartmentDetail apartment={selectedApartment} />}
+        {/* Map View of Region */}
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: 38.9072,
+            longitude: -77.0369,
+            latitudeDelta: 0.0052,
+            longitudeDelta: 0.0052,
+          }}
+        >
+          {/* Markers per Item */}
+          {apartments.map((apartment) => (
+            <CustomMarker
+              apartment={apartment}
+              key={apartment.id}
+              onPress={() => setSelectedApartment(apartment)}
+            />
+          ))}
+        </MapView>
+        {/* Apartment Detail Card */}
+        {selectedApartment && <ApartmentDetail apartment={selectedApartment} />}
 
-      {/* Bottom Sheet */}
-      <View style={styles.container}>
-        <BottomSheet index={1} snapPoints={snapPoints}>
-          <BottomSheetView style={styles.contentContainer}>
-            <Text>Awesome 🎉</Text>
-          </BottomSheetView>
-        </BottomSheet>
+        {/* Bottom Sheet */}
+        <View style={styles.container}>
+          <BottomSheet index={1} snapPoints={snapPoints}>
+            <BottomSheetView style={styles.contentContainer}>
+              <Text>Awesome 🎉</Text>
+            </BottomSheetView>
+          </BottomSheet>
+        </View>
       </View>
-    </View>
+    </GestureHandlerRootView>
   );
 }
 
