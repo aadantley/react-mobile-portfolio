@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, Image } from "react-native";
 import React from "react";
-
 import Icon from "react-native-vector-icons/FontAwesome";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function ApartmentDetail({ apartment, onPressX }) {
   return (

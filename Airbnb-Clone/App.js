@@ -3,18 +3,19 @@ import { Text, View, StyleSheet } from "react-native";
 import CustomMarker from "./components/CustomMarker";
 import MapView from "react-native-maps";
 import React, { useState } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 //local
 import apartments from "./data/apartments.json";
 import ApartmentDetail from "./components/ApartmentDetail";
-import BottomSheet from "./components/BottomSheet";
+import CustomBottomSheet from "./components/CustomBottomSheet";
 
 export default function App() {
   // Apartment Detail Card
   const [selectedApartment, setSelectedApartment] = useState(null);
 
   return (
-    <View>
+    <GestureHandlerRootView>
       <StatusBar style="auto" />
 
       {/* Map View of Region */}
@@ -45,8 +46,8 @@ export default function App() {
       )}
 
       {/* Bottom Sheet */}
-      <BottomSheet />
-    </View>
+      <CustomBottomSheet style={{ flex: 1 }} />
+    </GestureHandlerRootView>
   );
 }
 
