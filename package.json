@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "expo-router": "^3.4.9",
-    "expo-splash-screen": "^0.26.5"
-  }
-}
