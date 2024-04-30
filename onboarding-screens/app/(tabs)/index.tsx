@@ -5,6 +5,7 @@ import { Text, View } from "@/components/Themed";
 import { Link, Stack, router } from "expo-router";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 
 const onboardingSteps = [
   {
@@ -45,11 +46,25 @@ export default function TabOneScreen() {
 
   return (
     <SafeAreaView style={styles.page}>
+      <StatusBar style="dark" />
       <Stack.Screen options={{ headerShown: false }} />
+      <View style={styles.stepIndicatorContainer}>
+        {onboardingSteps.map((step, index) => (
+          <View
+            key={index}
+            style={[
+              styles.stepIndicator,
+              {
+                backgroundColor: index === screenIndex ? "#FFC300" : "#A40A3C",
+              },
+            ]}
+          />
+        ))}
+      </View>
       <FontAwesome5
         name={data.icon}
-        size={100}
-        color="#FFDA11"
+        size={150}
+        color="#FFC300"
         style={styles.image}
       />
       <View style={styles.footer}>
@@ -72,54 +87,73 @@ const styles = StyleSheet.create({
   page: {
     justifyContent: "center",
     flex: 1,
-    backgroundColor: "#15141A",
+    backgroundColor: "#FFF8E7",
     padding: 20,
   },
   image: {
     alignSelf: "center",
     margin: 20,
+    marginTop: 50,
   },
   title: {
-    color: "#FDFDFD",
+    color: "#A40A3C",
     fontSize: 50,
     fontWeight: "bold",
     letterSpacing: 1.5,
     marginVertical: 20,
+    marginHorizontal: 25,
   },
   description: {
-    color: "gray",
+    color: "#02030A",
     fontSize: 18,
     lineHeight: 28,
+    marginHorizontal: 40,
   },
   footer: {
-    backgroundColor: "#15141A",
+    backgroundColor: "#FFF8E7",
     marginTop: "auto",
     marginBottom: 120,
   },
   buttonsRow: {
-    backgroundColor: "#15141A",
+    backgroundColor: "#FFF8E7",
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginBottom: 80,
     alignItems: "center",
     gap: 20,
+    marginHorizontal: 25,
   },
   skipButton: {
-    backgroundColor: "#302E38",
+    backgroundColor: "#6B0848",
     padding: 15,
     borderRadius: 50,
   },
   continueButton: {
-    color: "#302E38",
-    backgroundColor: "#FDFDFD",
+    backgroundColor: "#EC610A",
     padding: 15,
     borderRadius: 50,
     flex: 1,
     alignItems: "center",
   },
   skipButtonText: {
-    color: "#FDFDFD",
+    color: "#EC610A",
     paddingHorizontal: 15,
   },
-  continueButtonText: {},
+  continueButtonText: {
+    color: "#FDFDFD",
+  },
+  stepIndicator: {
+    flex: 1,
+    height: 3,
+    margin: 5,
+    borderRadius: 10,
+    backgroundColor: "gray",
+  },
+  stepIndicatorContainer: {
+    flexDirection: "row",
+    backgroundColor: "#FFF8E7",
+    marginHorizontal: 25,
+    gap: 10,
+    marginTop: 10,
+  },
 });
