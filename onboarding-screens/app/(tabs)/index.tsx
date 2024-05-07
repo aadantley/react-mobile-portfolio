@@ -6,6 +6,12 @@ import { Link, Stack, router } from "expo-router";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import {
+  GestureDetector,
+  Gesture,
+  GestureHandlerRootView,
+  Directions,
+} from "react-native-gesture-handler";
 
 const onboardingSteps = [
   {
@@ -44,42 +50,59 @@ export default function TabOneScreen() {
     router.back();
   };
 
+  const fling = Gesture.Fling()
+    .direction(Directions.RIGHT | Directions.LEFT)
+    .onBegin((event) => {
+      console.log("fling start", event);
+    })
+    .onEnd((event) => {
+      console.log("fling end", event);
+      onContinue();
+    });
+
   return (
-    <SafeAreaView style={styles.page}>
-      <StatusBar style="dark" />
-      <Stack.Screen options={{ headerShown: false }} />
-      <View style={styles.stepIndicatorContainer}>
-        {onboardingSteps.map((step, index) => (
-          <View
-            key={index}
-            style={[
-              styles.stepIndicator,
-              {
-                backgroundColor: index === screenIndex ? "#FFC300" : "#A40A3C",
-              },
-            ]}
-          />
-        ))}
-      </View>
-      <FontAwesome5
-        name={data.icon}
-        size={150}
-        color="#FFC300"
-        style={styles.image}
-      />
-      <View style={styles.footer}>
-        <Text style={styles.title}>{data.title}</Text>
-        <Text style={styles.description}>{data.description}</Text>
-      </View>
-      <View style={styles.buttonsRow}>
-        <Pressable style={styles.skipButton} onPress={endOnboarding}>
-          <Text style={styles.skipButtonText}>Skip</Text>
-        </Pressable>
-        <Pressable style={styles.continueButton} onPress={onContinue}>
-          <Text style={styles.continueButtonText}>Continue</Text>
-        </Pressable>
-      </View>
-    </SafeAreaView>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.page}>
+        <StatusBar style="dark" />
+        <Stack.Screen options={{ headerShown: false }} />
+        <View style={styles.stepIndicatorContainer}>
+          {onboardingSteps.map((step, index) => (
+            <View
+              key={index}
+              style={[
+                styles.stepIndicator,
+                {
+                  backgroundColor:
+                    index === screenIndex ? "#FFC300" : "#A40A3C",
+                },
+              ]}
+            />
+          ))}
+        </View>
+        <GestureDetector gesture={fling}>
+          <View style={{ backgroundColor: "#FFF8E7" }}>
+            <FontAwesome5
+              name={data.icon}
+              size={150}
+              color="#FFC300"
+              style={styles.image}
+            />
+            <View style={styles.footer}>
+              <Text style={styles.title}>{data.title}</Text>
+              <Text style={styles.description}>{data.description}</Text>
+            </View>
+            <View style={styles.buttonsRow}>
+              <Pressable style={styles.skipButton} onPress={endOnboarding}>
+                <Text style={styles.skipButtonText}>Skip</Text>
+              </Pressable>
+              <Pressable style={styles.continueButton} onPress={onContinue}>
+                <Text style={styles.continueButtonText}>Continue</Text>
+              </Pressable>
+            </View>
+          </View>
+        </GestureDetector>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
 
