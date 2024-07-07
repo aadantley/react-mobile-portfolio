@@ -17,7 +17,7 @@ export default function ExerciseDetailScreen() {
   console.log(params);
   return (
     <View>
-      <Stack.Screen options={{ title: "Hello" }} />
+      <Stack.Screen options={{ title: exercise.name }} />
       <Text>Exercise Details: {exercise.name}</Text>
       <Text>Muscle: {exercise.muscle}</Text>
       <Text>Equipment: {exercise.equipment}</Text>
