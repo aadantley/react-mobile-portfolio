@@ -22,6 +22,9 @@ export default function ExerciseDetailScreen() {
       <Text>Muscle: {exercise.muscle}</Text>
       <Text>Equipment: {exercise.equipment}</Text>
       <Text>Type: {exercise.type}</Text>
+      <View>
+        <Text>Instructions: {exercise.instructions}</Text>
+      </View>
     </View>
   );
 }
