@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "center",
-    backgroundColor: "gainsboro",
+    backgroundColor: "ghostwhite",
     padding: 10,
-    paddingTop: 70,
   },
 });
