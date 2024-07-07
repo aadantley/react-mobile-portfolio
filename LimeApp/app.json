@@ -15,7 +15,8 @@
       [
         "@rnmapbox/maps",
         {
-          "RNMapboxMapsDownloadToken": "secret.key"
+          "RNMapboxMapsDownloadToken": "secret.key",
+          "RNMapboxMapsVersion": "11.*"
         }
       ]
     ],
