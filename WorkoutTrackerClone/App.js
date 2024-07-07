@@ -6,7 +6,10 @@ export default function App() {
   const exercise = exercises[0];
   return (
     <View style={styles.container}>
-      <Text>{exercise.name}</Text>
+      <Text style={styles.exerciseName}>{exercise.name}</Text>
+      <Text style={styles.exerciseSubtitle}>
+        {exercise.muscle} | Equipment: {exercise.equipment}
+      </Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -18,5 +21,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  exerciseName: { fontSize: 20, fontWeight: "500" },
+  exerciseSubtitle: {
+    color: "dimgray",
   },
 });
