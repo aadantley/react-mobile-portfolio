@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
   exerciseSubtitle: {
     color: "dimgray",
   },
+  subText: {
+    textTransform: "capitalize",
+  },
 });
 
 export default styles;
