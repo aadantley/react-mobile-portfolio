@@ -9,7 +9,7 @@ export default function App() {
       <View style={styles.exerciseContainer}>
         <Text style={styles.exerciseName}>{exercise.name}</Text>
         <Text style={styles.exerciseSubtitle}>
-          {exercise.muscle} | Equipment: {exercise.equipment}
+          {exercise.muscle.toUpperCase()} | {exercise.equipment.toUpperCase()}
         </Text>
       </View>
 
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 10,
     borderRadius: 10,
+    gap: 5,
   },
 
   exerciseName: { fontSize: 20, fontWeight: "500" },
