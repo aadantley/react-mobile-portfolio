@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Stack } from "expo-router";
 
@@ -14,17 +14,50 @@ export default function ExerciseDetailScreen() {
     return <Text>Exercise Not Found</Text>;
   }
 
-  console.log(params);
   return (
-    <View>
+    <ScrollView contentContainerStyle={styles.container}>
       <Stack.Screen options={{ title: exercise.name }} />
-      <Text>Exercise Details: {exercise.name}</Text>
-      <Text>Muscle: {exercise.muscle}</Text>
-      <Text>Equipment: {exercise.equipment}</Text>
-      <Text>Type: {exercise.type}</Text>
-      <View>
-        <Text>Instructions: {exercise.instructions}</Text>
+      <View style={styles.panel}>
+        <Text style={styles.exerciseName}> {exercise.name}</Text>
+        <Text style={styles.exerciseSubtitle}>
+          <Text style={styles.subValue}>Muscle: {exercise.muscle}</Text>
+          <Text style={styles.subValue}>Equipment: {exercise.equipment}</Text>
+          <Text style={styles.subValue}>Type: {exercise.type}</Text>
+        </Text>
       </View>
-    </View>
+
+      <View style={styles.panel}>
+        <Text style={styles.instructions}>
+          Instructions: {exercise.instructions}
+        </Text>
+      </View>
+    </ScrollView>
   );
 }
+
+styles = StyleSheet.create({
+  container: {
+    padding: 10,
+    gap: 10,
+  },
+  panel: {
+    backgroundColor: "white",
+    padding: 10,
+    borderRadius: 5,
+  },
+
+  exerciseName: {
+    fontSize: 20,
+    fontWeight: "500",
+  },
+  exerciseSubtitle: {
+    color: "dimgray",
+  },
+  subValue: {
+    textTransform: "capitalize",
+  },
+  instructions: {
+    fontSize: 16,
+    lineHeight: 22,
+  },
+});
