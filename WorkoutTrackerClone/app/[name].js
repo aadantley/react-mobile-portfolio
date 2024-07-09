@@ -40,7 +40,7 @@ export default function ExerciseDetailScreen() {
           style={styles.seeMore}
           onPress={() => setIsInstructionExpanded(!isInstructionExpanded)}
         >
-          {isInstructionExpanded ? "Close" : "See More"}
+          {isInstructionExpanded ? "See Less" : "See More"}
         </Text>
       </View>
     </ScrollView>
