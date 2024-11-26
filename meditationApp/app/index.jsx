@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <View style={styles.container}>
+    <View className="flex-1 justify-center items-center">
       <Text>Hello World</Text>
     </View>
   );

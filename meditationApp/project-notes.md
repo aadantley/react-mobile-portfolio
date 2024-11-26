@@ -15,3 +15,12 @@ Expo router provides file-based router, which is great for making this project l
 ### Assets
 
 grab asset files from google drive link.
+
+Added some constants files too, and updated the colors.ts file. 
+
+### nativewind
+
+to install:
+
+- npm install nativewind
+- npm install --save-dev tailwindcss
